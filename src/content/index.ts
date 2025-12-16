@@ -1,7 +1,9 @@
 import { PAGE_SPY_EXTENSION_CONFIG_KEY } from './constant';
 import { matchCurrentTab } from '../utils';
+import { installBridge } from './bridge';
 
 function main() {
+  installBridge();
   const cache = sessionStorage.getItem(PAGE_SPY_EXTENSION_CONFIG_KEY);
 
   if (cache) {
@@ -44,6 +46,11 @@ function main() {
         : `${host}${pathname}`;
       userCfg.api = address;
       userCfg.clientOrigin = `${scheme}${address}`;
+    }
+
+    if (userCfg.clientOrigin) {
+      // Bridge is installed in `content/preload.js` (before the SDK loads) to
+      // avoid the SDK caching the original `WebSocket` in the page world.
     }
 
     window.$harbor = new window.DataHarborPlugin();

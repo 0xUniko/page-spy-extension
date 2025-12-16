@@ -58,6 +58,22 @@ const options = [
       sourcemap: false,
       emptyOutDir: false,
       lib: {
+        entry: 'src/content/preload.ts',
+        name: 'PAGESPY_EXTENSION_CONTENT_PLACEHOLDER',
+        formats: ['iife'],
+        fileName: (formats, entryName) => {
+          return `content/preload.js`;
+        }
+      }
+    }
+  },
+  // content - MAIN (initializer)
+  {
+    build: {
+      minify: false,
+      sourcemap: false,
+      emptyOutDir: false,
+      lib: {
         entry: 'src/content/index.ts',
         name: 'PAGESPY_EXTENSION_CONTENT_PLACEHOLDER',
         formats: ['iife'],

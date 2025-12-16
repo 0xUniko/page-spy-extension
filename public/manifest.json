@@ -28,6 +28,7 @@
         "http://*/*"
       ],
       "js": [
+        "content/preload.js",
         "sdk/index.min.js",
         "sdk/plugins/data-harbor.min.js",
         "sdk/plugins/rrweb.min.js",
